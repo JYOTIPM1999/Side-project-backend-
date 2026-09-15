@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Lost in Deep Space | Page Not Found</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;800;900&family=JetBrains+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              display: ["Outfit", "sans-serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            colors: {
+              brand: {
+                50: "#eef2ff",
+                100: "#e0e7ff",
+                400: "#818cf8",
+                500: "#6366f1",
+                600: "#4f46e5",
+                glow: "#00f2fe",
+              },
+              cyber: {
+                pink: "#ff2a85",
+                cyan: "#00f0ff",
+                dark: "#0a0d14",
+                card: "rgba(17, 24, 39, 0.75)",
+              },
+            },
+            animation: {
+              float: "floating 6s ease-in-out infinite",
+              "pulse-glow": "pulseGlow 3s ease-in-out infinite",
+              scanline: "scanline 8s linear infinite",
+            },
+            keyframes: {
+              floating: {
+                "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+                "50%": { transform: "translateY(-16px) rotate(3deg)" },
+              },
+              pulseGlow: {
+                "0%, 100%": { opacity: "0.4", transform: "scale(1)" },
+                "50%": { opacity: "0.8", transform: "scale(1.05)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Custom Scrollbars */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: rgba(15, 23, 42, 0.6);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #4f46e5;
+        border-radius: 9999px;
+      }
+
+      /* Glitch Animation Effect */
+      .glitch {
+        position: relative;
+      }
+      .glitch::before,
+      .glitch::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        clip: rect(0, 0, 0, 0);
+      }
+      .glitch::before {
+        left: -2px;
+        text-shadow: 2px 0 #ff2a85;
+        animation: glitch-anim-1 2.5s infinite linear alternate-reverse;
+      }
+      .glitch::after {
+        left: 2px;
+        text-shadow: -2px 0 #00f0ff;
+        animation: glitch-anim-2 3s infinite linear alternate-reverse;
+      }
+      @keyframes glitch-anim-1 {
+        0% {
+          clip: rect(12px, 9999px, 44px, 0);
+          transform: skew(0.3deg);
+        }
+        20% {
+          clip: rect(65px, 9999px, 80px, 0);
+          transform: skew(-0.4deg);
+        }
+        40% {
+          clip: rect(30px, 9999px, 10px, 0);
+          transform: skew(0.5deg);
+        }
+        60% {
+          clip: rect(75px, 9999px, 90px, 0);
+          transform: skew(-0.2deg);
+        }
+        80% {
+          clip: rect(20px, 9999px, 60px, 0);
+          transform: skew(0.4deg);
+        }
+        100% {
+          clip: rect(50px, 9999px, 30px, 0);
+          transform: skew(0deg);
+        }
+      }
+      @keyframes glitch-anim-2 {
+        0% {
+          clip: rect(70px, 9999px, 92px, 0);
+          transform: skew(-0.3deg);
+        }
+        25% {
+          clip: rect(10px, 9999px, 35px, 0);
+          transform: skew(0.4deg);
+        }
+        50% {
+          clip: rect(85px, 9999px, 95px, 0);
+          transform: skew(-0.5deg);
+        }
+        75% {
+          clip: rect(40px, 9999px, 60px, 0);
+          transform: skew(0.2deg);
+        }
+        100% {
+          clip: rect(15px, 9999px, 50px, 0);
+          transform: skew(0deg);
+        }
+      }
+
+      /* Subtle grid background */
+      .bg-grid-pattern {
+        background-size: 40px 40px;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+          );
+      }
+      .light .bg-grid-pattern {
+        background-image:
+          linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+      }
+
+      /* Glassmorphism card */
+      .glass-panel {
+        background: rgba(15, 23, 42, 0.65);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .light .glass-panel {
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid rgba(0, 0, 0, 0.08);
+      }
+    </style>
+  </head>
+
+  <body
+    class="bg-[#080b12] light:bg-slate-50 text-slate-100 light:text-slate-900 font-sans min-h-screen flex flex-col relative overflow-x-hidden selection:bg-indigo-500 selection:text-white transition-colors duration-300"
+  >
+    <!-- Background Animated Starfield Canvas -->
+    <canvas
+      id="spaceCanvas"
+      class="fixed inset-0 pointer-events-none z-0"
+    ></canvas>
+    <div
+      class="fixed inset-0 bg-grid-pattern pointer-events-none z-0 opacity-60"
+    ></div>
+
+    <!-- Glowing ambient background lights -->
+    <div
+      class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-indigo-600/15 rounded-full blur-[130px] pointer-events-none animate-pulse-glow z-0"
+    ></div>
+    <div
+      class="fixed bottom-10 right-10 w-[350px] h-[350px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none z-0"
+    ></div>
+
+    <header
+      class="w-full max-w-7xl mx-auto px-6 py-6 flex items-center justify-between relative z-10"
+    >
+      <a href="#" class="flex items-center gap-3 group">
+        <div
+          class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-cyan-400 p-[2px] shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-200"
+        >
+          <div
+            class="w-full h-full bg-[#0b0f19] light:bg-white rounded-[10px] flex items-center justify-center"
+          >
+            <i
+              data-lucide="layers"
+              class="w-5 h-5 text-cyan-400 light:text-indigo-600"
+            ></i>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <span
+            class="font-display font-extrabold text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 light:from-slate-900 light:to-slate-700 bg-clip-text text-transparent"
+            >NEXUS.CORE</span
+          >
+          <span
+            class="text-[10px] tracking-widest text-cyan-400 uppercase font-mono"
+            >Status // 404 ERROR</span
+          >
+        </div>
+      </a>
+
+      <!-- Theme Toggle & Support -->
+      <div class="flex items-center gap-3">
+        <button
+          id="themeToggleBtn"
+          aria-label="Toggle Theme"
+          class="p-2.5 rounded-xl glass-panel text-slate-300 light:text-slate-700 hover:text-white light:hover:text-black hover:border-slate-600/60 transition duration-200 shadow-sm"
+        >
+          <i data-lucide="sun" id="sunIcon" class="w-4 h-4 hidden"></i>
+          <i data-lucide="moon" id="moonIcon" class="w-4 h-4"></i>
+        </button>
+
+        <a
+          href="#help"
+          onclick="showNotification('Support team alerted (Status code: 404)')"
+          class="hidden sm:flex items-center gap-2 text-xs font-mono px-3.5 py-2 rounded-xl glass-panel hover:bg-slate-800/40 light:hover:bg-slate-200/50 text-slate-300 light:text-slate-700 transition"
+        >
+          <i data-lucide="life-buoy" class="w-3.5 h-3.5 text-indigo-400"></i>
+          System Status
+        </a>
+      </div>
+    </header>
+
+    <main
+      class="flex-1 max-w-5xl mx-auto px-6 py-8 flex flex-col items-center justify-center text-center relative z-10"
+    >
+      <!-- Status Badge -->
+      <div
+        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/25 text-red-400 text-xs font-mono font-medium mb-6 backdrop-blur-md animate-pulse"
+      >
+        <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span>
+        HTTP 404: QUANTUM_LINK_DISCONNECTED
+      </div>
+
+      <!-- Glitch 404 Big Heading -->
+      <div class="relative select-none my-2">
+        <h1
+          class="font-display font-black text-8xl sm:text-9xl md:text-[11rem] leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-slate-200 to-slate-600 light:from-slate-900 light:to-slate-400 glitch"
+          data-text="404"
+        >
+          404
+        </h1>
+
+        <!-- Floating Astronaut Illustration (Interactive Hover) -->
+        <div
+          id="astronautFloater"
+          class="absolute -top-6 -right-6 sm:-right-14 animate-float cursor-grab active:cursor-grabbing transform transition-transform duration-300 hover:scale-110"
+          title="Click me to play rescue mission!"
+        >
+          <div
+            class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-cyan-500/10 border border-cyan-500/30 p-2 backdrop-blur-md shadow-xl shadow-cyan-500/10 flex items-center justify-center"
+          >
+            <svg
+              viewBox="0 0 64 64"
+              fill="none"
+              class="w-14 h-14 drop-shadow-md"
+            >
+              <!-- Helmet & Visor -->
+              <ellipse cx="32" cy="24" rx="16" ry="15" fill="#e2e8f0" />
+              <ellipse cx="32" cy="25" rx="11" ry="8" fill="#0f172a" />
+              <path
+                d="M25 24 Q32 20 39 24"
+                stroke="#00f0ff"
+                stroke-width="2"
+                stroke-linecap="round"
+                opacity="0.9"
+              />
+              <!-- Body -->
+              <path
+                d="M20 38 C20 33 44 33 44 38 L42 52 C42 54 22 54 22 52 Z"
+                fill="#cbd5e1"
+              />
+              <rect x="27" y="38" width="10" height="7" rx="2" fill="#6366f1" />
+              <!-- Arms / Legs -->
+              <path
+                d="M20 39 Q12 43 14 50"
+                stroke="#cbd5e1"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+              <path
+                d="M44 39 Q52 43 50 50"
+                stroke="#cbd5e1"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+              <path
+                d="M26 52 L24 60"
+                stroke="#94a3b8"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+              <path
+                d="M38 52 L40 60"
+                stroke="#94a3b8"
+                stroke-width="4"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <h2
+        class="font-display font-bold text-2xl sm:text-3xl text-slate-100 light:text-slate-800 mt-2 mb-3"
+      >
+        Houston, We Lost This Coordinate.
+      </h2>
+      <p
+        class="max-w-lg text-slate-400 light:text-slate-600 text-sm sm:text-base leading-relaxed mb-8"
+      >
+        The destination you requested was shifted into a black hole or never
+        existed in this dimension. Check the URL or use one of our recovery
+        portals below.
+      </p>
+
+      <div class="w-full max-w-md relative mb-10">
+        <form id="searchForm" onsubmit="handleSearch(event)" class="relative">
+          <div class="relative flex items-center">
+            <i
+              data-lucide="search"
+              class="w-4 h-4 text-slate-400 absolute left-4 pointer-events-none"
+            ></i>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search documentation, projects, tools..."
+              class="w-full pl-11 pr-24 py-3.5 rounded-2xl glass-panel text-sm text-slate-200 light:text-slate-800 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500 transition shadow-lg shadow-black/20"
+            />
+            <button
+              type="submit"
+              class="absolute right-2 px-3.5 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs shadow-md shadow-indigo-600/30 transition flex items-center gap-1.5"
+            >
+              <span>Search</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        </form>
+        <div
+          id="searchResultNote"
+          class="hidden mt-2 text-xs font-mono text-cyan-400 text-left px-2"
+        ></div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 mb-14">
+        <a
+          href="#"
+          onclick="showNotification('Redirecting to Mission Control (Home)...')"
+          class="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-500 hover:from-indigo-500 hover:to-indigo-400 text-white font-medium text-sm shadow-xl shadow-indigo-600/25 flex items-center gap-2 transform hover:-translate-y-0.5 active:translate-y-0 transition duration-200"
+        >
+          <i data-lucide="home" class="w-4 h-4"></i>
+          <span>Return to Dashboard</span>
+        </a>
+
+        <button
+          onclick="toggleMiniGame()"
+          class="px-6 py-3 rounded-xl glass-panel hover:bg-slate-800/60 light:hover:bg-slate-200/70 border border-slate-700/60 light:border-slate-300 text-slate-200 light:text-slate-800 font-medium text-sm flex items-center gap-2 group transition duration-200"
+        >
+          <i
+            data-lucide="gamepad-2"
+            class="w-4 h-4 text-cyan-400 group-hover:rotate-12 transition-transform"
+          ></i>
+          <span>Play Space Deflector</span>
+        </button>
+
+        <button
+          onclick="history.back()"
+          class="p-3 rounded-xl glass-panel hover:bg-slate-800/60 light:hover:bg-slate-200/70 border border-slate-700/60 light:border-slate-300 text-slate-400 hover:text-white light:hover:text-black transition duration-200"
+          title="Go back to previous page"
+        >
+          <i data-lucide="undo-2" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="w-full max-w-3xl text-left mb-6">
+        <h3
+          class="text-xs font-mono tracking-widest text-slate-400 light:text-slate-500 uppercase mb-4 text-center"
+        >
+          Suggested Warp Points
+        </h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Card 1 -->
+          <a
+            href="#projects"
+            onclick="showNotification('Navigating to Portfolios & Projects...')"
+            class="glass-panel p-4 rounded-2xl hover:border-indigo-500/50 hover:bg-slate-800/40 light:hover:bg-slate-100/80 transition-all duration-200 group flex flex-col justify-between"
+          >
+            <div class="flex items-center justify-between mb-2">
+              <div
+                class="p-2 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:scale-110 transition-transform"
+              >
+                <i data-lucide="code-2" class="w-5 h-5"></i>
+              </div>
+              <i
+                data-lucide="arrow-up-right"
+                class="w-4 h-4 text-slate-500 group-hover:text-indigo-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+              ></i>
+            </div>
+            <div>
+              <h4
+                class="font-display font-semibold text-sm text-slate-200 light:text-slate-800"
+              >
+                Projects & Work
+              </h4>
+              <p class="text-xs text-slate-400 mt-1">
+                Explore deployed apps, UI frameworks, and open source.
+              </p>
+            </div>
+          </a>
+
+          <!-- Card 2 -->
+          <a
+            href="#docs"
+            onclick="showNotification('Navigating to Documentation...')"
+            class="glass-panel p-4 rounded-2xl hover:border-cyan-500/50 hover:bg-slate-800/40 light:hover:bg-slate-100/80 transition-all duration-200 group flex flex-col justify-between"
+          >
+            <div class="flex items-center justify-between mb-2">
+              <div
+                class="p-2 rounded-xl bg-cyan-500/10 text-cyan-400 group-hover:scale-110 transition-transform"
+              >
+                <i data-lucide="book-open" class="w-5 h-5"></i>
+              </div>
+              <i
+                data-lucide="arrow-up-right"
+                class="w-4 h-4 text-slate-500 group-hover:text-cyan-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+              ></i>
+            </div>
+            <div>
+              <h4
+                class="font-display font-semibold text-sm text-slate-200 light:text-slate-800"
+              >
+                Documentation
+              </h4>
+              <p class="text-xs text-slate-400 mt-1">
+                System architecture guides, APIs, and tutorials.
+              </p>
+            </div>
+          </a>
+
+          <!-- Card 3 -->
+          <a
+            href="#contact"
+            onclick="showNotification('Navigating to Direct Comms...')"
+            class="glass-panel p-4 rounded-2xl hover:border-pink-500/50 hover:bg-slate-800/40 light:hover:bg-slate-100/80 transition-all duration-200 group flex flex-col justify-between"
+          >
+            <div class="flex items-center justify-between mb-2">
+              <div
+                class="p-2 rounded-xl bg-pink-500/10 text-pink-400 group-hover:scale-110 transition-transform"
+              >
+                <i data-lucide="message-square" class="w-5 h-5"></i>
+              </div>
+              <i
+                data-lucide="arrow-up-right"
+                class="w-4 h-4 text-slate-500 group-hover:text-pink-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all"
+              ></i>
+            </div>
+            <div>
+              <h4
+                class="font-display font-semibold text-sm text-slate-200 light:text-slate-800"
+              >
+                Direct Comms
+              </h4>
+              <p class="text-xs text-slate-400 mt-1">
+                Get in touch with engineering & support team.
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </main>
+
+    <div
+      id="gameModal"
+      class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4"
+    >
+      <div
+        class="w-full max-w-lg glass-panel rounded-3xl p-6 relative border border-slate-700 shadow-2xl flex flex-col items-center"
+      >
+        <!-- Close Button -->
+        <button
+          onclick="toggleMiniGame()"
+          class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-full hover:bg-slate-800/60 transition"
+        >
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Game Header -->
+        <div class="flex items-center gap-2 mb-3">
+          <i
+            data-lucide="satellite"
+            class="w-5 h-5 text-cyan-400 animate-spin"
+          ></i>
+          <h3 class="font-display font-bold text-lg text-white">
+            Space Probe Deflector
+          </h3>
+        </div>
+        <p class="text-xs text-slate-400 mb-4 text-center">
+          Move paddle with mouse/touch or Left/Right arrows to keep the 404
+          signal alive!
+        </p>
+
+        <!-- Game Canvas Container -->
+        <div
+          class="relative w-full aspect-[4/3] bg-[#05070d] rounded-2xl overflow-hidden border border-slate-800 shadow-inner flex items-center justify-center"
+        >
+          <canvas
+            id="arcadeCanvas"
+            width="400"
+            height="300"
+            class="w-full h-full block"
+          ></canvas>
+
+          <!-- Game Overlay Start / Game Over -->
+          <div
+            id="gameOverlay"
+            class="absolute inset-0 bg-black/75 flex flex-col items-center justify-center gap-3 p-4"
+          >
+            <div
+              id="gameOverScore"
+              class="text-xs font-mono text-cyan-400 hidden"
+            >
+              SCORE: 0
+            </div>
+            <h4
+              id="gameOverlayTitle"
+              class="font-display font-bold text-xl text-white"
+            >
+              READY FOR LAUNCH?
+            </h4>
+            <button
+              id="startGameBtn"
+              onclick="startArcadeGame()"
+              class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-cyan-500 text-white font-semibold text-xs shadow-lg shadow-cyan-500/20 hover:scale-105 active:scale-95 transition"
+            >
+              START DEFLECTOR
+            </button>
+          </div>
+        </div>
+
+        <!-- Score Bar -->
+        <div
+          class="w-full flex justify-between items-center mt-4 px-2 text-xs font-mono text-slate-400"
+        >
+          <div>
+            SCORE: <span id="currentScore" class="text-white font-bold">0</span>
+          </div>
+          <div>
+            HIGH SCORE:
+            <span id="highScore" class="text-cyan-400 font-bold">0</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="toastNotification"
+      class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none"
+    >
+      <div
+        class="glass-panel px-4 py-3 rounded-2xl border border-indigo-500/40 shadow-xl shadow-indigo-500/10 flex items-center gap-3 text-sm text-slate-200"
+      >
+        <div class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></div>
+        <span id="toastMessage">Action recorded</span>
+      </div>
+    </div>
+
+    <footer
+      class="w-full max-w-7xl mx-auto px-6 py-6 border-t border-slate-800/40 light:border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 relative z-10 gap-3"
+    >
+      <div class="flex items-center gap-2 font-mono">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        All core server nodes operational
+      </div>
+      <div>
+        &copy; 2026 Nexus Core Platforms. Designed for precision & resilience.
+      </div>
+    </footer>
+
+    <script>
+      // Initialize Lucide Icons
+      lucide.createIcons();
+
+      // Theme Toggle Handler
+      const themeToggleBtn = document.getElementById("themeToggleBtn");
+      const sunIcon = document.getElementById("sunIcon");
+      const moonIcon = document.getElementById("moonIcon");
+      const htmlElem = document.documentElement;
+
+      themeToggleBtn.addEventListener("click", () => {
+        if (htmlElem.classList.contains("dark")) {
+          htmlElem.classList.remove("dark");
+          htmlElem.classList.add("light");
+          sunIcon.classList.remove("hidden");
+          moonIcon.classList.add("hidden");
+        } else {
+          htmlElem.classList.remove("light");
+          htmlElem.classList.add("dark");
+          sunIcon.classList.add("hidden");
+          moonIcon.classList.remove("hidden");
+        }
+      });
+
+      // Toast Notification System (Never use alert)
+      function showNotification(msg) {
+        const toast = document.getElementById("toastNotification");
+        const text = document.getElementById("toastMessage");
+        text.innerText = msg;
+        toast.classList.remove("translate-y-20", "opacity-0");
+        setTimeout(() => {
+          toast.classList.add("translate-y-20", "opacity-0");
+        }, 3000);
+      }
+
+      // Search Box Handler
+      function handleSearch(e) {
+        e.preventDefault();
+        const query = document.getElementById("searchInput").value.trim();
+        const note = document.getElementById("searchResultNote");
+        if (!query) return;
+
+        note.innerText = `Searching orbit for: "${query}"... (Index matched 0 stale paths)`;
+        note.classList.remove("hidden");
+        showNotification(`Scanning cluster for '${query}'`);
+      }
+
+      // Interactive Floating Astronaut Easter Egg
+      const astronaut = document.getElementById("astronautFloater");
+      astronaut.addEventListener("click", () => {
+        showNotification("Launching rescue deflector arcade...");
+        toggleMiniGame();
+      });
+
+      // --- Starfield Particle Canvas Animation ---
+      const starCanvas = document.getElementById("spaceCanvas");
+      const ctx = starCanvas.getContext("2d");
+      let stars = [];
+      const NUM_STARS = 120;
+
+      function resizeCanvas() {
+        starCanvas.width = window.innerWidth;
+        starCanvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+
+      class Star {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * starCanvas.width;
+          this.y = Math.random() * starCanvas.height;
+          this.size = Math.random() * 1.8 + 0.5;
+          this.speed = Math.random() * 0.4 + 0.1;
+          this.opacity = Math.random() * 0.8 + 0.2;
+        }
+        update() {
+          this.y -= this.speed;
+          if (this.y < 0) {
+            this.y = starCanvas.height;
+            this.x = Math.random() * starCanvas.width;
+          }
+        }
+        draw() {
+          ctx.fillStyle = `rgba(200, 225, 255, ${this.opacity})`;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < NUM_STARS; i++) {
+        stars.push(new Star());
+      }
+
+      function animateStars() {
+        ctx.clearRect(0, 0, starCanvas.width, starCanvas.height);
+        stars.forEach((s) => {
+          s.update();
+          s.draw();
+        });
+        requestAnimationFrame(animateStars);
+      }
+      animateStars();
+
+      // --- Mini Arcade Game: "Space Probe Deflector" ---
+      const gameModal = document.getElementById("gameModal");
+      const arcadeCanvas = document.getElementById("arcadeCanvas");
+      const actx = arcadeCanvas.getContext("2d");
+      const gameOverlay = document.getElementById("gameOverlay");
+      const gameOverlayTitle = document.getElementById("gameOverlayTitle");
+      const gameOverScore = document.getElementById("gameOverScore");
+      const currentScoreElem = document.getElementById("currentScore");
+      const highScoreElem = document.getElementById("highScore");
+
+      let gameRunning = false;
+      let score = 0;
+      let highScore = 0;
+      let ball, paddle, gameLoopId;
+
+      function toggleMiniGame() {
+        if (gameModal.classList.contains("hidden")) {
+          gameModal.classList.remove("hidden");
+          resetGameStates();
+        } else {
+          gameModal.classList.add("hidden");
+          gameRunning = false;
+          cancelAnimationFrame(gameLoopId);
+        }
+      }
+
+      function resetGameStates() {
+        paddle = {
+          width: 70,
+          height: 10,
+          x: arcadeCanvas.width / 2 - 35,
+          y: arcadeCanvas.height - 20,
+          speed: 7,
+          dx: 0,
+        };
+        ball = {
+          x: arcadeCanvas.width / 2,
+          y: 60,
+          radius: 7,
+          dx: 3 * (Math.random() > 0.5 ? 1 : -1),
+          dy: 3.2,
+        };
+        score = 0;
+        currentScoreElem.innerText = "0";
+        gameOverlay.classList.remove("hidden");
+        gameOverlayTitle.innerText = "READY FOR LAUNCH?";
+        gameOverScore.classList.add("hidden");
+        drawArcadeFrame();
+      }
+
+      function startArcadeGame() {
+        gameOverlay.classList.add("hidden");
+        gameRunning = true;
+        ball.x = arcadeCanvas.width / 2;
+        ball.y = 70;
+        ball.dx = 3 * (Math.random() > 0.5 ? 1 : -1);
+        ball.dy = 3.2;
+        score = 0;
+        currentScoreElem.innerText = score;
+        runGame();
+      }
+
+      function runGame() {
+        if (!gameRunning) return;
+        updateGame();
+        drawArcadeFrame();
+        gameLoopId = requestAnimationFrame(runGame);
+      }
+
+      function updateGame() {
+        // Paddle position update
+        paddle.x += paddle.dx;
+        if (paddle.x < 0) paddle.x = 0;
+        if (paddle.x + paddle.width > arcadeCanvas.width)
+          paddle.x = arcadeCanvas.width - paddle.width;
+
+        // Ball move
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+
+        // Wall collisions
+        if (
+          ball.x - ball.radius < 0 ||
+          ball.x + ball.radius > arcadeCanvas.width
+        ) {
+          ball.dx *= -1;
+        }
+        if (ball.y - ball.radius < 0) {
+          ball.dy *= -1;
+        }
+
+        // Paddle collision
+        if (
+          ball.y + ball.radius >= paddle.y &&
+          ball.y - ball.radius <= paddle.y + paddle.height &&
+          ball.x >= paddle.x &&
+          ball.x <= paddle.x + paddle.width
+        ) {
+          ball.dy = -Math.abs(ball.dy) * 1.05; // slight speed increase
+          // add spin based on where it hit the paddle
+          const hitOffset =
+            (ball.x - (paddle.x + paddle.width / 2)) / (paddle.width / 2);
+          ball.dx = hitOffset * 4;
+          score += 10;
+          currentScoreElem.innerText = score;
+          if (score > highScore) {
+            highScore = score;
+            highScoreElem.innerText = highScore;
+          }
+        }
+
+        // Bottom fail
+        if (ball.y - ball.radius > arcadeCanvas.height) {
+          endArcadeGame();
+        }
+      }
+
+      function endArcadeGame() {
+        gameRunning = false;
+        cancelAnimationFrame(gameLoopId);
+        gameOverScore.innerText = `FINAL SIGNAL DEFLECTIONS: ${score}`;
+        gameOverScore.classList.remove("hidden");
+        gameOverlayTitle.innerText = "PROBE LOST IN SPACE";
+        gameOverlay.classList.remove("hidden");
+      }
+
+      function drawArcadeFrame() {
+        actx.fillStyle = "#0a0d18";
+        actx.fillRect(0, 0, arcadeCanvas.width, arcadeCanvas.height);
+
+        // Draw Grid Lines in Game
+        actx.strokeStyle = "rgba(99, 102, 241, 0.15)";
+        actx.lineWidth = 1;
+        for (let x = 0; x < arcadeCanvas.width; x += 40) {
+          actx.beginPath();
+          actx.moveTo(x, 0);
+          actx.lineTo(x, arcadeCanvas.height);
+          actx.stroke();
+        }
+        for (let y = 0; y < arcadeCanvas.height; y += 40) {
+          actx.beginPath();
+          actx.moveTo(0, y);
+          actx.lineTo(arcadeCanvas.width, y);
+          actx.stroke();
+        }
+
+        // Draw Paddle
+        const grad = actx.createLinearGradient(
+          paddle.x,
+          0,
+          paddle.x + paddle.width,
+          0,
+        );
+        grad.addColorStop(0, "#6366f1");
+        grad.addColorStop(1, "#00f0ff");
+        actx.fillStyle = grad;
+        actx.shadowColor = "#00f0ff";
+        actx.shadowBlur = 10;
+        actx.beginPath();
+        actx.roundRect(paddle.x, paddle.y, paddle.width, paddle.height, 5);
+        actx.fill();
+        actx.shadowBlur = 0;
+
+        // Draw Glowing Ball
+        actx.fillStyle = "#ffffff";
+        actx.shadowColor = "#ff2a85";
+        actx.shadowBlur = 12;
+        actx.beginPath();
+        actx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+        actx.fill();
+        actx.shadowBlur = 0;
+      }
+
+      // Keyboard controls
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft" || e.key === "a") paddle.dx = -paddle.speed;
+        if (e.key === "ArrowRight" || e.key === "d") paddle.dx = paddle.speed;
+      });
+
+      window.addEventListener("keyup", (e) => {
+        if (["ArrowLeft", "ArrowRight", "a", "d"].includes(e.key))
+          paddle.dx = 0;
+      });
+
+      // Mouse & Touch controls on canvas
+      function handlePointerMove(e) {
+        const rect = arcadeCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const relativeX =
+          (clientX - rect.left) * (arcadeCanvas.width / rect.width);
+        paddle.x = Math.max(
+          0,
+          Math.min(
+            arcadeCanvas.width - paddle.width,
+            relativeX - paddle.width / 2,
+          ),
+        );
+      }
+
+      arcadeCanvas.addEventListener("mousemove", handlePointerMove);
+      arcadeCanvas.addEventListener("touchmove", handlePointerMove, {
+        passive: true,
+      });
+    </script>
+  </body>
+</html>
