@@ -4,5 +4,13 @@
     "express": "^5.2.1",
     "nodemon": "^3.1.14"
   },
-  "scripts": {}
+  "scripts": {},
+  "type": "module",
+  "name": "backend-comeback",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
