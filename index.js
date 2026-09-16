@@ -31,7 +31,15 @@ function checkRoute(req, res, next) {
   console.log(req.url);
   next();
 }
-app.use(checkRoute);
+function ageCheck(req, res, next) {
+  if (!req.query.age || req.query.age < 18) {
+    res.send("You can't access");
+  } else {
+    next();
+  }
+}
+app.use(ageCheck);
+// app.use(checkRoute);
 
 app.get("/", (req, res) => {
   res.send("Home");
