@@ -54,6 +54,30 @@ client.connect().then((connection) => {
     });
     res.send(results);
   });
+  app.delete("/delete-students/:name", async (req, res) => {
+    console.log(req.params.name);
+
+    const collection = db.collection("students");
+    const results = await collection.deleteOne({
+      name: req.params.name,
+    });
+    res.send(results);
+  });
+  app.put("/update-students/:id", async (req, res) => {
+    console.log(req.params.id);
+
+    const collection = db.collection("students");
+
+    const results = await collection.updateOne(
+      {
+        _id: new ObjectId(req.params.id),
+      },
+      {
+        $set: req.body,
+      },
+    );
+    res.send(results);
+  });
 });
 
 app.listen(3200);
