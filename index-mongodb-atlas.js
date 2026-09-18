@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 
 const app = express();
 const url =
-  "mongodb+srv://jyotipm1999_db_user:Fmqkutw75AJkASLX@cluster0.ykpy8lu.mongodb.net/?appName=Cluster0";
+  "mongodb+srv://jyotipm1999_db_user:<passoword>@cluster0.ykpy8lu.mongodb.net/?appName=Cluster0";
 const client = new MongoClient(url);
 
 client.connect().then(() => {
